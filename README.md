@@ -8,25 +8,25 @@ The links below display the notebooks as regular HTML web pages. From there you 
 
 Please let me know (gmxavier at fat.uerj.br) if you any thoughts or suggestions on how these notebooks could be improved for teaching and learning the principles of the Chemical Processes Control.
 
-### [Table of contents](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/toc.ipynb?flush=true)
+### [Table of contents](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/toc.ipynb?flush=true)
 
-### [Chapter 1.0 Getting started](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/01.00-Getting-Started.ipynb)
+### [Chapter 1.0 Getting started](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/01.00-Getting-Started.ipynb)
 
-### [Chapter 2.0 Introduction](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/02.00-Introduction.ipynb)
+### [Chapter 2.0 Introduction](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/02.00-Introduction.ipynb)
 
-### [Chapter 3.0 Mathematical preliminaries](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/03.00-Mathematical-Preliminaries.ipynb)
+### [Chapter 3.0 Mathematical preliminaries](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/03.00-Mathematical-Preliminaries.ipynb)
 
-### [Chapter 4.0 Dynamic response](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/04.00-Dynamic-Response.ipynb)
+### [Chapter 4.0 Dynamic response](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/04.00-Dynamic-Response.ipynb)
 
-### [Chapter 5.0 Analysis of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/05.00-Analysis-Control-Systems.ipynb)
+### [Chapter 5.0 Analysis of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/05.00-Analysis-Control-Systems.ipynb)
 
-### [Chapter 6.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/06.00-Design-Control-Systems.ipynb)
+### [Chapter 6.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/06.00-Design-Control-Systems.ipynb)
 
-### [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/07.00-Stability.ipynb)
+### [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Stability.ipynb)
 
-### [Chapter 8.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/08.00-Frequency-Response.ipynb)
+### [Chapter 8.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Frequency-Response.ipynb)
 
-### [Chapter 9.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/09.00-Multiloop.ipynb)
+### [Chapter 9.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Multiloop.ipynb)
 
 **License requirements.** The materials in this repository are available for noncommercial use under terms of the [CC-BY-NC-SA-4.0 license](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 You are invited to fork this repository, and to use, adapt, remix these material for non-commericial purposes. The license terms require you to give attribution and share your work under the same terms. Pull requests for corrections and additions to these materials are most welcome.
