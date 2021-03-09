@@ -2,7 +2,7 @@
 
 # FAT04-13150 Controle de Processos Químicos
 
-This repository comprises a collection of Jupyter/Python notebooks in support of [**FAT04-13150 Controle de Processos Químicos**](http://www.ementario.uerj.br/ementa.php?cdg_disciplina=13150), a course taught at the [Faculdade de Tecnologia de Resende](https://www.fat.uerj.br/). It was very inspired in the work by Jeffrey Kantor (jeff at nd.edu) available [here](https://github.com/jckantor/CBE30338.git).
+This repository comprises a collection of Jupyter/Python notebooks in support of [**FAT04-13150 Controle de Processos Químicos**](http://www.ementario.uerj.br/ementa.php?cdg_disciplina=13150), a course taught at the [Faculdade de Tecnologia de Resende](https://www.fat.uerj.br/). It was very inspired in the work by Prof. Jeffrey Kantor (jeff at nd.edu) available [here](https://github.com/jckantor/CBE30338.git).
 
 The links below display the notebooks as regular HTML web pages. From there you can run the notebook on [Google Colaboratory](https://colab.research.google.com) or download to run on your own laptop. To run on your own laptop you will need to install Jupyter and Python 3, such as the excellent [Anaconda distribution from Continuum Analytics](https://www.continuum.io/downloads).
 
