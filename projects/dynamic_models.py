@@ -222,10 +222,10 @@ def fourtank_update(t, x, u, params={}):
 def nuclear_update(t, x, u, params={}):
   """Nuclear reactor dynamics.
 
-    Khorramabadi, S. S., Boroushaki, M., & Lucas, C. (2008). Emotional learning based 
-    intelligent controller for a PWR nuclear reactor core during load following operation. 
-    Annals of Nuclear Energy, 35(11), 2051–2058.
-    
+    Gábor, A., Fazekas, C., Szederkényi, G., & Hangos, K. M. (2011). Modeling and 
+    Identification of a Nuclear Reactor with Temperature Effects and Xenon Poisoning. 
+    European Journal of Control, 17(1), 104–115.
+    https://doi.org/10.3166/ejc.17.104-115
     
     Parameters
     ----------
@@ -255,9 +255,9 @@ def nuclear_update(t, x, u, params={}):
   alpham = params.get('alpham', -2.075e-2)  # temperature coefficient of the moderator in $/°C
   A1     = params.get('A1', 0.1056)         # parameter group in 1/s
   A3     = params.get('A3', 0.8757)         # parameter group in 1/s
-  p0     = params.get('p0', 0.0401)         # rod parameter 1 in $
-  p1     = params.get('p1', -0.44)          # rod parameter 2 in $/m
-  p2     = params.get('p2', -0.966)         # rod parameter 3 in $/m2
+  p0     = params.get('p0', 0.0401)         # rod parameter 0 in $
+  p1     = params.get('p1', -0.44)          # rod parameter 1 in $/m
+  p2     = params.get('p2', -0.966)         # rod parameter 2 in $/m2
   LAMBD  = params.get('LAMBD', 2.18e-5)     # average generation time in s
   SIGMAf = params.get('SIGMAf', 0.3358)     # macroscopic fission cross section in 1/cm
   lambdI = params.get('lambdI', 2.849e-5)   # decay constant of iodine in 1/s
