@@ -137,7 +137,7 @@ def polyeth_update(t, x, u, params={}):
   Fc     = u[0]     # flow rate of catalyst
   Tfeed  = u[1]     # feed temperature
 
-  # Define the algebric equations
+  # Define the algebraic equations
   bt   = Vp * Cv * np.sqrt((M1_con+In_con) * RR * T - Pv)
   RM1  = M1_con * kp0 * np. exp(-Ea/R*(1/T-1/Tf)) * (Y1+Y2)
   Cpg  = M1_con/(M1_con + In_con) * Cpm1 + In_con/(M1_con + In_con) * CpIn
@@ -209,7 +209,7 @@ def fourtank_update(t, x, u, params={}):
   v1 = u[0]     # controller signal to pump 1 in V
   v2 = u[1]     # controller signal to pump 1 in V
 
-  # Define the algebric equations
+  # Define the algebraic equations
 
   # Define the ODEs
   dh1dt = -(a1/A1)*np.sqrt(2*g*h1) + (a3/A1)*np.sqrt(2*g*h3) + (gamma1*k1/A1)*v1
@@ -234,8 +234,8 @@ def nuclear_update(t, x, u, params={}):
                        C,  concentration of the delayed neutron emitting nuclei in % 
                        Tf, temperature of the fuel in °C
                        Tm, average temperature of the moderator in °C
-                       X, xenon concentration in 1/cm3
-                       I, iodine concentration in 1/cm3
+                       X,  xenon concentration in 1/cm3
+                       I,  iodine concentration in 1/cm3
                        
     u : array
          System input: z,   rod position in m
@@ -267,6 +267,13 @@ def nuclear_update(t, x, u, params={}):
   beta   = params.get('beta', 0.0065)       # fraction of delayed neutron group
   YI     = params.get('YI', 6.38e-2)        # iodine yield 
   YX     = params.get('YI', 2.2e-3)         # xenon yield
+  
+  if (t==0):
+    N0   = x[0] # neutron concentration at t=0 in %
+    Tf0  = x[2] # temperature of the fuel at t=0 in °C
+    Tm0  = x[3] # temperature of the water leaving the reactor at t=0 in °C
+    X0   = x[4] # xenon concentration per macroscopic fission cross section at t=0 in 1/cm2
+    Tin0 = u[1] # temperature of the water entering the reactor at t=0 in °C
 
   # Define variables for reactor state and inputs
   N  = x[0]     # neutron concentration in %
@@ -279,7 +286,7 @@ def nuclear_update(t, x, u, params={}):
   z   = u[0]     # rod position in m
   Tin = u[1]     # temperature of the water entering the reactor in °C
 
-  # Define the algebric equations
+  # Define the algebraic equations
   rho = alphaf*(Tf - Tf0) + alpham*(Tm - Tm0) + p2*z**2 + p1*z + p0 - (sigmaX/beta/SIGMAf)*(X - X0)
 
   # Define the ODEs
