@@ -298,3 +298,17 @@ def nuclear_update(t, x, u, params={}):
   dXdt  = YX*N/N0*phi0 + lambdI*I - lambdX*X - sigmaX*N/N0*phi0
                              
   return [dNdt, dCdt, dTfdt, dTmdt, dIdt, dXdt]
+
+# USEFUL REFERENCES
+#
+# Modeling and Identification of a Nuclear Reactor with Temperature Effects and Xenon Poisoning
+# https://www.sciencedirect.com/science/article/abs/pii/S0947358011705726
+#
+# Improved temperature control of a PWR nuclear reactor using an LQG/LTR based controller
+# https://ieeexplore.ieee.org/document/1178712
+#
+# A simple dynamic model of the primary circuit in VVER plants for controller design purposes
+# https://www.sciencedirect.com/science/article/abs/pii/S0029549306006789?via%3Dihub
+#
+# Drum-boiler dynamics
+# http://www.dei.unipd.it/~picci/Files/TEACHING/CONTROLLO_DEI_PROCESSI/DrumBoiler.pdf
