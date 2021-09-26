@@ -15,6 +15,6 @@
 
 ## [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/07.00-Stability.ipynb)
 
-## [Chapter 8.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/08.00-Frequency-Response.ipynb)
+## [Chapter 8.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/08.00-Multiloop.ipynb)
 
-## [Chapter 9.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/09.00-Multiloop.ipynb)
+## [Chapter 9.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/09.00-Frequency-Response.ipynb)
