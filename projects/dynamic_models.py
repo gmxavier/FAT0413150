@@ -87,6 +87,7 @@ def polyeth_update(t, x, u, params={}):
     u : array
          System input: Fc, flow rate of catalyst in kg/s
                        Tfeed, feed temperature in K
+                       Twi, cooling water temperature in K                       
 
     Returns
     -------
@@ -120,7 +121,6 @@ def polyeth_update(t, x, u, params={}):
   Fg    = params.get('Fg', 8500.)                  # mol/s
   Fw    = params.get('Fw', 3.11e5*18e-3)           # kg/s
   Tf    = params.get('Tf', 360.)                   # K
-  Twi   = params.get('Twi', 289.56)                # K
   RR    = params.get('RR', 8.20575e-5)             # (m3 atm)/(mol K)
   R     = params.get('R', 8.314)                   # J/(mol K)
   ac    = params.get('ac', 0.548)                  # mol/kg
@@ -134,8 +134,9 @@ def polyeth_update(t, x, u, params={}):
   Tw1    = x[5]     # temperature of cooling water stream leaving stage 1 of heat exchanger
   Tg1    = x[6]     # temperature of recycle gas stream leaving stage 1 of heat exchanger
 
-  Fc     = u[0]     # flow rate of catalyst
-  Tfeed  = u[1]     # feed temperature
+  Fc     = u[0]     # flow rate of catalyst in kg/s
+  Tfeed  = u[1]     # feed temperature in K
+  Twi    = u[3]     # cooling water temperature in K
 
   # Define the algebraic equations
   bt   = Vp * Cv * np.sqrt((M1_con+In_con) * RR * T - Pv)
