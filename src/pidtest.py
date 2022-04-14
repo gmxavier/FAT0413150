@@ -1,6 +1,5 @@
 import scipy as sp
 import numpy as np
-!pip install control
 from control.matlab import *
 import matplotlib.pyplot as plt
 import pandas as pd
