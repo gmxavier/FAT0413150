@@ -5,7 +5,6 @@
 # processes.
 
 import numpy as np
-import control as ct
 
 def berg_update(t, x, u, params={}):
   """Insulin dynamics based on Bergman minimal model.
