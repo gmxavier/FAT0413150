@@ -1,3 +1,12 @@
+import scipy as sp
+import numpy as np
+!pip install control
+from control.matlab import *
+import matplotlib.pyplot as plt
+import pandas as pd
+from google.colab import data_table
+data_table.enable_dataframe_formatter()
+
 def pidtest(Kp, Ki, Kd, 
             alpha = 0.02,
             num   = [1e-1],
