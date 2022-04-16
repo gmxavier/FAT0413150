@@ -22,7 +22,7 @@ Please let me know (gmxavier at fat.uerj.br) if you any thoughts or suggestions 
 
 ### [Chapter 6.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/06.00-Design-Control-Systems.ipynb)
 
-### [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Stability.ipynb)
+### [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Stability-Closed-Loop-Systems.ipynb)
 
 ### [Chapter 8.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Frequency-Response.ipynb)
 
