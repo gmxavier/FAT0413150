@@ -20,7 +20,7 @@ def pidtest(Kp, Ki, Kd,
     Gcl = feedback(Gc*Gp, 1)
     plt.title('Servo control response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
   time = linspace(tpar[0], tpar[1], tpar[2])
-  u = 0*time
+  u = ud = 0*time
   u[time>t0] = 1
   ud[time>(t0+theta)] = 1
   y = lsim(Gcl, ud, time)[0]
