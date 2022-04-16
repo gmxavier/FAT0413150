@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from control.matlab import tf, feedback, lsim
+from control.matlab import linspace, tf, feedback, lsim
 from pandas import DataFrame
 from google.colab import data_table
 data_table.enable_dataframe_formatter()
