@@ -10,7 +10,7 @@ def pidtest(Kp, Ki, Kd,
             den   = [20**2, 2*0.5*20, 1],
             theta = 0,
             t0 = 25,
-            tpar  = [0, 10*20, 0.2],
+            tpar  = [0, 10*20, 1000],
             test = True):
   
   Gp = Gcl = tf(num, den)
