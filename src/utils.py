@@ -9,8 +9,7 @@ def pidtest(Kp, Ki, Kd,
             num   = [1e-1],
             den   = [20**2, 2*0.5*20, 1],
             theta = 0,
-            t0 = 25,
-            tpar  = [0, 10*20, 1000],
+            tpar  = [0, 10*20, 1000, 25], #start, stop, N, t0
             test = True):
   
   Gp = Gcl = tf(num, den)
@@ -21,8 +20,8 @@ def pidtest(Kp, Ki, Kd,
     plt.title('Servo control response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
   time = linspace(tpar[0], tpar[1], tpar[2])
   u = ud = 0*time
-  u[time>t0] = 1
-  ud[time>(t0+theta)] = 1
+  u[time>tpar[3] = 1
+  ud[time>(tpar[3]+theta)] = 1
   y = lsim(Gcl, ud, time)[0]
   plt.plot(time, y, time, u)
   plt.xlabel('Time')
