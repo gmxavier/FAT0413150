@@ -74,7 +74,7 @@ def pidtest(Kp, Ki, Kd,
 
 def callender356(K, tau, theta, 
                  type_of_plant='FODT',
-                 type_of_control='Regulatory', 
+                 type_of_control='regulatory', 
                  type_of_controller='PI', 
                  criteria=1):
     r'''Calculates the PI controller parameters for a FOLPD process reaction 
@@ -91,7 +91,7 @@ def callender356(K, tau, theta,
     type_of_plant : string
          Type of the plant model   
     type_of_control : string
-         Type of the control loop (Regulatory or Servo)
+         Type of the control loop (regulatory or servo)
     type_of_controller : string
          Type of the controller (P, PI, PD, PID)
     criteria : integer
