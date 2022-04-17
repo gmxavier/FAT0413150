@@ -31,8 +31,8 @@ def pidtest(Kp, Ki, Kd,
     tpar : array
          Time parameters (start time, stop time, samples number and step time)
     test : boolean
-         If test = True, it simulates the servo loop response.
-         If test = False, it simulates the process reaction curve.
+         If test = True, it returns the servo control response.
+         If test = False, it returns the process reaction curve.
 
     Returns
     -------
