@@ -260,10 +260,66 @@ def hazebroek_vanderwaerden(K, tau, theta,
         x1 = interp(thetaovertau, thetaovertau_, x1_)
         x2 = interp(thetaovertau, thetaovertau_, x2_)
         Kp = x1/(K*thetaovertau)
-        Ki = x2*theta
+        Ki = Kp/x2*theta
         return [Kp, Ki]        
     if thetaovertau > 3.4:
         Kp = 1/(K*thetaovertau)*(0.5*thetaovertau + 1)
-        Ki = theta/(1.6*theta - 1.2*tau)
+        Ki = Kp/theta/(1.6*theta - 1.2*tau)
         return [Kp, Ki]  
  
+def oppelt(K, tau, theta, 
+           type_of_plant='FODT',
+           type_of_control='regulatory', 
+           type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rule of Oppelt (1951).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+    This function calculates the recommended value for Kp.
+
+    Example
+    --------
+
+    >>> oppelt(K=1, tau=10, theta=3)
+    
+
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''    
+    thetaovertau = theta/tau
+    if thetaovertau < 1:
+        Kp = (1/K)*(0.77/thetaovertau - 1)
+        Ki = Kp/(3.32*theta)
+        return []       
+    if thetaovertau > 1:
+        Kp = (1/K)*(0.77/thetaovertau - 1)
+        Ki = Kp/(1.66*theta)
+        return [Kp, Ki]  
