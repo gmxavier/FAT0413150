@@ -240,6 +240,7 @@ def hazebroek_vanderwaerden(K, tau, theta,
     --------
 
     >>> hazebroek_vanderwaerden(K=1, tau=10, theta=3)
+    [2.3333333333333335, 1.4705882352941178]
     [2.3333333333333335, 14.28]
 
     Reference
@@ -260,11 +261,11 @@ def hazebroek_vanderwaerden(K, tau, theta,
         x1 = interp(thetaovertau, thetaovertau_, x1_)
         x2 = interp(thetaovertau, thetaovertau_, x2_)
         Kp = x1/(K*thetaovertau)
-        Ki = Kp/x2*theta
+        Ki = Kp/(x2*theta)
         return [Kp, Ki]        
     if thetaovertau > 3.4:
         Kp = 1/(K*thetaovertau)*(0.5*thetaovertau + 1)
-        Ki = Kp/theta/(1.6*theta - 1.2*tau)
+        Ki = Kp/(theta/(1.6*theta - 1.2*tau))
         return [Kp, Ki]  
  
 def oppelt(K, tau, theta, 
