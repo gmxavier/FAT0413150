@@ -427,3 +427,63 @@ def moros_rosenberg(K, tau, theta,
     Kp = 0.91/(K*thetaovertau)
     Ki = Kp/(3.3*theta)
     return [Kp, Ki] 
+
+def cohen_coon(K, tau, theta, 
+               type_of_plant='FODT',
+               type_of_control='regulatory', 
+               type_of_controller='PI'):
+    r'''Returns the PI controller parameters from the rule of Cohen and Coon (1953).
+
+    Parameters
+    ----------
+    K : float
+         Static gain of the process reaction curve, [-] 
+    tau : float
+         Time constant (lag) of the process reaction curve, [time]
+    theta : float
+         Dead time of the process reaction curve, [time]
+    type_of_plant : string
+         Type of the plant model   
+    type_of_control : string
+         Type of the control loop (regulatory or servo)
+    type_of_controller : string
+         Type of the controller (P, PI, PD, PID)
+
+    Returns
+    -------
+    Kp : float
+         Proportional gain, [-]
+
+    Ki : float
+         Integral gain, [1/time]
+         
+    Kd : float
+         Derivative gain, [time]         
+
+    Notes
+    -----
+    Applicable to theta/tau <= 1.0.
+
+    Example
+    --------
+
+    >>> Kp, Ki, Kd = cohen_coon(K=1.25, tau=4, theta=0.9, type_of_controller='PID'); [Kp, Kp/Ki, Kd/Kp]
+    [4.266666666666667, 1.8, 0.45]
+    
+    Reference
+    ----------
+    .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
+       Imperial College Press, 2009.
+    '''
+    if type_of_controller == 'P':
+        Kp = (1/K)*(tau/theta + 1/3)
+        return [Kp]
+    if type_of_controller == 'PI':
+        Kp = (1/K)*(0.9*tau/theta + 1/12)
+        Ki = Kp/((theta*(30 + 3*(theta/tau))/(theta*(9 + 20*(theta/tau)))))
+        return [Kp, Ki]
+    if type_of_controller == 'PID':
+        Kp = (1/K)*((4/3)*(tau/theta) + 1/4)
+        Ki = Kp/((theta*(32 + 6*(theta/tau))/(theta*(13 + 8*(theta/tau)))))
+        Kd = Kp*(4/(theta*(11 + 2*(theta/tau))))
+        return [Kp, Ki, Kd]    
