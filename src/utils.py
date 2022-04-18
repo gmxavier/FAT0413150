@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from control.matlab import linspace, tf, feedback, lsim
 from pandas import DataFrame
+from numpy import interp
     
 def pidtest(Kp, Ki, Kd, 
             alpha = 0.02,
@@ -256,8 +257,8 @@ def hazebroek_vanderwaerden(K, tau, theta,
                1.02,1.06,1.09,1.13,1.17,1.20,1.28,1.36,1.45,1.53,1.62,1.71,1.81]
         x2_ = [7.14,4.76,3.70,3.03,2.50,2.17,1.92,1.75,1.61,1.49,1.41,1.32,1.25,
                1.19,1.14,1.10,1.06,1.03,1.00,0.95,0.91,0.88,0.85,0.83,0.81,0.80]
-        x1 = np.interp(thetaovertau, thetaovertau_, x1_)
-        x2 = np.interp(thetaovertau, thetaovertau_, x2_)
+        x1 = interp(thetaovertau, thetaovertau_, x1_)
+        x2 = interp(thetaovertau, thetaovertau_, x2_)
         Kp = x1/(K*thetaovertau)
         Ki = x2*theta
         return [Kp, Ki]        
