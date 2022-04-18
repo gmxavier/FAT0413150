@@ -462,13 +462,13 @@ def cohen_coon(K, tau, theta,
 
     Notes
     -----
-    Applicable to theta/tau <= 1.0.
+
 
     Example
     --------
 
     >>> Kp, Ki, Kd = cohen_coon(K=1.25, tau=4, theta=0.9, type_of_controller='PID'); [Kp, Kp/Ki, Kd/Kp]
-    [4.266666666666667, 1.8, 0.45]
+    [4.940740740740741, 2.253378378378379, 0.38816108685104317]
     
     Reference
     ----------
