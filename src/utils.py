@@ -179,9 +179,9 @@ def ziegler_nichols(K, tau, theta,
     Example
     --------
 
-    >>> zieglernichols(K=1, tau=10, theta=3)
+    >>> Kp, Ki, Kd = ziegler_nichols(K=1.25, tau=4, theta=0.9, type_of_controller='PID'); [Kp, Kp/Ki, Kd/Kp]
+    [4.266666666666667, 1.8, 0.45]
     
-
     Reference
     ----------
     .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
@@ -240,8 +240,7 @@ def hazebroek_vanderwaerden(K, tau, theta,
     --------
 
     >>> hazebroek_vanderwaerden(K=1, tau=10, theta=3)
-    [2.3333333333333335, 1.4705882352941178]
-    [2.3333333333333335, 14.28]
+    [2.3333333333333335, 0.16339869281045755]
 
     Reference
     ----------
@@ -319,7 +318,7 @@ def oppelt(K, tau, theta,
     if thetaovertau < 1:
         Kp = (1/K)*(0.77/thetaovertau - 1)
         Ki = Kp/(3.32*theta)
-        return []       
+        return [Kp, Ki]  
     if thetaovertau > 1:
         Kp = (1/K)*(0.77/thetaovertau - 1)
         Ki = Kp/(1.66*theta)
