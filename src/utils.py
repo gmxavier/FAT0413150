@@ -245,20 +245,24 @@ def hazebroek_vanderwaerden(K, tau, theta,
     ----------
     .. [1] O’Dwyer, A. Handbook of PI and PID Controller Tuning Rules. London:
        Imperial College Press, 2009.
-    '''
-    thetaovertau_ = [0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4]
-    x1_ = [0.68,0.70,0.72,0.74,0.76,0.79,0.81,0.84,0.87,0.90,0.93,0.96,0.99,1.02,1.06,1.09,1.13,1.17,1.20,1.28,1.36,1.45,1.53,1.62,1.71,1.81]
-    x2_ = [7.14,4.76,3.70,3.03,2.50,2.17,1.92,1.75,1.61,1.49,1.41,1.32,1.25,1.19,1.14,1.10,1.06,1.03,1.00,0.95,0.91,0.88,0.85,0.83,0.81,0.80]
+    '''    
     thetaovertau = theta/tau
-    if thetaovertau < 3.4:
+    if thetaovertau < 0.2:
+        return [] 
+    if (thetaovertau >= 0.2) & (thetaovertau <= 3.4):    
+        thetaovertau_ = [0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,
+                         1.5,1.6,1.7,1.8,1.9,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4]
+        x1_ = [0.68,0.70,0.72,0.74,0.76,0.79,0.81,0.84,0.87,0.90,0.93,0.96,0.99,
+               1.02,1.06,1.09,1.13,1.17,1.20,1.28,1.36,1.45,1.53,1.62,1.71,1.81]
+        x2_ = [7.14,4.76,3.70,3.03,2.50,2.17,1.92,1.75,1.61,1.49,1.41,1.32,1.25,
+               1.19,1.14,1.10,1.06,1.03,1.00,0.95,0.91,0.88,0.85,0.83,0.81,0.80]
         x1 = np.interp(thetaovertau, thetaovertau_, x1_)
-        x2 = np.interp(thetaovertau, thetaovertau_, x1_)
-        if type_of_controller == 'PI':
-            Kp = 0.9*(1/K)*(tau/theta)
-            Ki = Kp/(3.3*theta)
-            return [Kp, Ki]
-        if type_of_controller == 'PID':
-            Kp = 1.2*(1/K)*(tau/theta)
-            Ki = Kp/(2*theta)
-            Kd = Kp*0.5*theta
-            return [Kp, Ki, Kd]    
+        x2 = np.interp(thetaovertau, thetaovertau_, x2_)
+        Kp = x1/(K*thetaovertau)
+        Ki = x2*theta
+        return [Kp, Ki]        
+    if thetaovertau > 3.4:
+        Kp = 1/(K*thetaovertau)*(0.5*thetaovertau + 1)
+        Ki = theta/(1.6*theta - 1.2*tau)
+        return [Kp, Ki]  
+ 
