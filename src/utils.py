@@ -240,7 +240,7 @@ def hazebroek_vanderwaerden(K, tau, theta,
     --------
 
     >>> hazebroek_vanderwaerden(K=1, tau=10, theta=3)
-    
+    [2.3333333333333335, 14.28]
 
     Reference
     ----------
