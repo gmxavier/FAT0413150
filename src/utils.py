@@ -480,7 +480,7 @@ def cohen_coon(K, tau, theta,
         return [Kp]
     if type_of_controller == 'PI':
         Kp = (1/K)*(0.9*tau/theta + 1/12)
-        Ki = Kp/(theta*(30 + 3*(theta/tau))/(theta*(9 + 20*(theta/tau)))
+        Ki = Kp/((theta*(30 + 3*(theta/tau))/(theta*(9 + 20*(theta/tau)))
         return [Kp, Ki]
     if type_of_controller == 'PID':
         Kp = (1/K)*((4/3)*(tau/theta) + 1/4)
