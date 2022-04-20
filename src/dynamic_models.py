@@ -6,6 +6,57 @@
 
 import numpy as np
 
+def cstr_update(t, x, u, params={}):
+  """CSTR dynamics
+
+    Parameters
+    ----------
+    x: array
+         System state: CA, molar concentration of component A at the reactor
+                       in kmol/m3
+                       T, reactor temperature in K
+        
+    u: array
+         System input: F, feed flowrate in m3/h
+                       CA0, molar concentration of component A at the feed
+                       in kmol/m3
+                       T0, feed tempeature in K
+                       Tc, reactor cooling jacket temperature in K
+  
+
+    Returns
+    -------
+    y:  array
+        The time derivatives of CA and T
+
+    """
+
+  # Set up the system parameters
+
+  Ea  = params.get('Ea',11850.0)   # activation energy [kcal/kmol] 
+  R   = params.get('R',1.98589)    # ideal gas constant [kcal/kmol/K]
+  k_0 = params.get('k_0',3.5e+07)  # Arrhenius constant[1/h]
+  dH  = params.get('dH',-5960.0)   # reaction enthalpy [kcal/kmol]
+  rho = params.get('rho',1000.0)   # density [kg/m3]
+  Cp  = params.get('Cp',0.480)     # heat capacity [kcal/(kg*K)]
+  UA  = params.get ('UA',145.0)    # global heat transfer coefficient times heat transfer area [kcal/(K*h)]
+  V   = params.get('V',1.0)        # volume [m3]
+ 
+  CA= x[0]                         # molar concentration of component A at the feed [kmol/m3]
+  T = x[1]                         # reactor temperature [K]
+
+  F   = u[0]                       # feed flowrate [m3/h]
+  CA0 = u[1]                       # molar concentration of component A at the feed, [kmol/m3]
+  T0  = u[2]                       # reactor temperature [K]
+  Tc  = u[3]                       # reactor cooling jacket temperature, [K]
+
+
+  # Define the ODEs
+  dCAdt = ((F/V)*(CA0-CA)) - (k_0*(CA*np.exp(-Ea/(R*T))))
+  dTdt = ((F/V)*(T0-T))-((UA)/(V*Cp*rho))*(T-Tc)+((-dH*V*k_0)/(Cp*rho)*((np.exp(-Ea/(R*T))*CA)))
+ 
+  return [dCAdt, dTdt]
+
 def berg_update(t, x, u, params={}):
   """Insulin dynamics based on Bergman minimal model.
 
