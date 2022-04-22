@@ -24,7 +24,7 @@ Please let me know (gmxavier at fat.uerj.br) if you any thoughts or suggestions 
 
 ### [Chapter 7.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Multiloop-Systems.ipynb)
 
-### [Chapter 8.0 Stability of closed-loop systems]((http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Stability-Closed-Loop-Systems.ipynb)
+### [Chapter 8.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Stability-Closed-Loop-Systems.ipynb)
 
 ### [Chapter 9.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Frequency-Response.ipynb)
 
