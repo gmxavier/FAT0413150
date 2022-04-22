@@ -22,11 +22,12 @@ Please let me know (gmxavier at fat.uerj.br) if you any thoughts or suggestions 
 
 ### [Chapter 6.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/06.00-Design-Control-Systems.ipynb)
 
-### [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Stability-Closed-Loop-Systems.ipynb)
+### [Chapter 7.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Multiloop-Systems.ipynb)
 
-### [Chapter 8.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Frequency-Response.ipynb)
+### [Chapter 8.0 Stability of closed-loop systems]((http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Stability-Closed-Loop-Systems.ipynb)
 
-### [Chapter 9.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Multiloop-Systems.ipynb)
+### [Chapter 9.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Frequency-Response.ipynb)
+
 
 **License requirements.** The materials in this repository are available for noncommercial use under terms of the [CC-BY-NC-SA-4.0 license](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 You are invited to fork this repository, and to use, adapt, remix these material for non-commericial purposes. The license terms require you to give attribution and share your work under the same terms. Pull requests for corrections and additions to these materials are most welcome.
