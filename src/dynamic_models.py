@@ -61,9 +61,9 @@ def lunar_update(t, x, u, params={}):
   F_l = u[1] # lateral engine thrust [N]
 
   # Define the auxiliary equations
-  F_t = np.clip(F_t, 0, F_t_max)
-  F_l = np.clip(F_l, -F_l_max, F_l_max)
-  c_f = (F_t + np.abs(F_l))/I_sp if p_y*m_f > 0 else 0
+  F_t = np.clip(F_t, 0, F_t_max) if m_f > 0 else 0
+  F_l = np.clip(F_l, -F_l_max, F_l_max) if m_f > 0 else 0
+  c_f = (F_t + np.abs(F_l))/I_sp
 
   # Define the ODEs
   p_xdot     = v_x
