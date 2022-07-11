@@ -4,17 +4,17 @@
 # This file contains a collection of full nonlinear models of several different
 # processes.
 
-import numpy as np
-try:
-  import fluids
-except:
-  !pip install fluids
-  import fluids.friction
-try: 
-  import control as ct
-except:
-  !pip install control
-  import control as ct
+#import numpy as np
+#try:
+#  import fluids
+#except:
+#  !pip install fluids
+#  import fluids.friction
+#try: 
+#  import control as ct
+#except:
+#  !pip install control
+#  import control as ct
   
 def lunar_update(t, x, u, params={}):
   """Lunar lander dynamics
