@@ -3,18 +3,6 @@
 #
 # This file contains a collection of full nonlinear models of several different
 # processes.
-
-#import numpy as np
-#try:
-#  import fluids
-#except:
-#  !pip install fluids
-#  import fluids.friction
-#try: 
-#  import control as ct
-#except:
-#  !pip install control
-#  import control as ct
   
 def lunar_update(t, x, u, params={}):
   """Lunar lander dynamics
@@ -40,6 +28,8 @@ def lunar_update(t, x, u, params={}):
          The time derivatives of p_x, v_x, p_y, v_y, theta, v_theta, m_t and m_f
     """   
 
+  import numpy as np
+  
   # Set up the system parameters
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
   g       = params.get('g',        1.6)     # moon gravitational constant   [m/s2]
@@ -107,7 +97,9 @@ def glow_update(t, x, u, params={}):
     y: array
          The time derivatives of x1, x2 and x3
     """
-
+  
+  import numpy as np
+  
   # Set up the system parameters
 
   R       = params.get('R',      8314.0)      # 
@@ -212,6 +204,8 @@ def cstr_update(t, x, u, params={}):
         The time derivatives of CA and T
 
     """
+  
+  import numpy as np
 
   # Set up the system parameters
 
@@ -328,6 +322,8 @@ def polyeth_update(t, x, u, params={}):
 
     """
   
+  import numpy as np
+  
   # Set up the system parameters
   Vg    = params.get('Vg', 500.)                   # m3
   Vp    = params.get('Vp',   0.5)                  # 
@@ -417,6 +413,8 @@ def fourtank_update(t, x, u, params={}):
         The time derivatives of h1, h2, h3 and h4
 
     """
+  
+  import numpy as np
   
   # Set up the system parameters
   A1     = params.get('A1', 28.)                   # cm2
