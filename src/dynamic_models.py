@@ -21,67 +21,71 @@ def lunar_update(t, x, u, params={}):
     Parameters
     ----------
     x: array
-         System state: xp     vertical position   [m]
-                       vx     vertical speed      [m/s]
-                       yp     horizontal position [m]
-                       vy     horizontal speed    [m/s]
-                       theta  heading             [rad]
-                       vtheta heading speed       [rad/s]
-                       mt     total mass          [kg]
-                       mf     fuel mass           [kg]
+         System state: p_x     horizontal position [m]
+                       v_x     horizontal speed    [m/s]
+                       p_y     vertical position   [m]
+                       v_y     vertical speed      [m/s]
+                       theta   heading             [rad]
+                       v_theta heading speed       [rad/s]
+                       m_t     total mass          [kg]
+                       m_f     fuel mass           [kg]
         
     u: array
-         System input: Ft     main engine thrust    [N]
-                       Fl     lateral engine thrust [N]
+         System input: F_t   main engine thrust    [N]
+                       F_l   lateral engine thrust [N]
   
     Returns
     -------
     y: array
-         The time derivatives of xp, vx, yp, vy, theta, vtheta, mt and mf
+         The time derivatives of p_x, v_x, p_y, v_y, theta, v_theta, m_t and m_f
     """   
 
   # Set up the system parameters
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
-  J      = params.get('J',     100.0e+03) # moment of inertia           [kg m2]
-  Ft_max = params.get('Ft_max', 44.0e+03) # main engine max thrust      [N]
-  Fl_max = params.get('Fl_max',  0.5e+03) # lateral engine max thrust   [N]
-  Isp    = params.get('Isp',     3.0e+03) # thruster specific impulse   [N/(kg/s)]
-  g      = params.get('g',       1.6)     # moon gravitational constant [m/s2]
+  g       = params.get('g',        1.6)     # moon gravitational constant   [m/s2]
+  L       = params.get('L',        4.0)     # distance to center of gravity [m]
+  J       = params.get('J',      100.0e+03) # moment of inertia             [kg m2]
+  I_sp    = params.get('I_sp',     3.0e+03) # thruster specific impulse     [N/(kg/s)]
+  F_t_max = params.get('F_t_max', 44.0e+03) # main engine max thrust        [N]
+  F_l_max = params.get('F_l_max',  0.5e+03) # lateral engine max thrust     [N]
 
-  #xp_0 =   0.5e+03 # initial horizontal position  [m]
-  #yp_0 = 160.0e+03 # initial vertical position    [m]
-  #vy_0 =  -0.7e+03 # initial vertical speed       [m/s]
-  #mt_0 =  15.0e+03 # initial total mass           [kg]
-  #mf_0 =   8.0e+03 # initial fuel mass            [kg]
+  #p_x_0   =   0.5e+03 # initial horizontal position  [m]
+  #v_x_0   =   0.0e+03 # initial horizontal speed     [m/s]
+  #p_y_0   = 160.0e+03 # initial vertical position    [m]
+  #v_y_0   =  -0.7e+03 # initial vertical speed       [m/s]
+  #theta   =   0.0e+03 # initial heading              [rad]
+  #v_theta =   0.0e+03 # initial heading speed        [rad/s]
+  #m_t_0   =  15.0e+03 # initial total mass           [kg]
+  #m_f_0   =   8.0e+03 # initial fuel mass            [kg]
 
-  xp     = x[0] # horizontal position [m]
-  vx     = x[1] # horizontal speed    [m/s]
-  yp     = x[2] # vertical position   [m]
-  vy     = x[3] # vertical speed      [m/s]
-  theta  = x[4] # heading             [rad]
-  vtheta = x[5] # heading speed       [rad/s]
-  mt     = x[6] # total mass          [kg]
-  mf     = x[7] # fuel mass           [kg]
+  p_x     = x[0] # horizontal position [m]
+  v_x     = x[1] # horizontal speed    [m/s]
+  p_y     = x[2] # vertical position   [m]
+  v_y     = x[3] # vertical speed      [m/s]
+  theta   = x[4] # heading             [rad]
+  v_theta = x[5] # heading speed       [rad/s]
+  m_t     = x[6] # total mass          [kg]
+  m_f     = x[7] # fuel mass           [kg]
  
-  Ft = u[0] # main engine thrust    [N]
-  Fl = u[1] # lateral engine thrust [N]
+  F_t = u[0] # main engine thrust    [N]
+  F_l = u[1] # lateral engine thrust [N]
 
   # Define the auxiliary equations
-  Ft = np.clip(Ft, 0, Ft_max)
-  Fl = np.clip(Fl, -Fl_max, Fl_max)
-  u = (Ft + np.abs(Fl))/Isp if (mf > 0) & (yp > 0) else 0
+  F_t = np.clip(F_t, 0, F_t_max)
+  F_l = np.clip(F_l, -F_l_max, F_l_max)
+  c_f = (F_t + np.abs(F_l))/I_sp if p_y*m_f > 0 else 0
 
   # Define the ODEs
-  xpdot     = vx
-  vxdot     = (Fl*np.cos(theta) - Ft*np.sin(theta))/mt
-  ypdot     = vy if yp > 0 else 0
-  vydot     = (Fl*np.sin(theta) + Ft*np.cos(theta))/mt - g if yp > 0 else 0
-  thetadot  = vtheta
-  vthetadot = 4*Fl/J
-  mtdot     = -u
-  mfdot     = -u
+  p_xdot     = v_x
+  v_xdot     = (F_l*np.cos(theta) - F_t*np.sin(theta))/m_t
+  p_ydot     = v_y if p_y > 0 else 0
+  v_ydot     = (F_l*np.sin(theta) + F_t*np.cos(theta))/m_t - g if p_y > 0 else 0
+  thetadot   = v_theta
+  v_thetadot = (L/J)*F_l
+  m_tdot     = -c_f
+  m_fdot     = -c_f
  
-  return [xpdot, vxdot, ypdot, vydot, thetadot, vthetadot, mtdot, mfdot]
+  return [p_xdot, v_xdot, p_ydot, v_ydot, thetadot, v_thetadot, m_tdot, m_fdot]
 
 def glow_update(t, x, u, params={}):
   """Gas-lifted oil well dynamics
