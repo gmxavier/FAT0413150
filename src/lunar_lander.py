@@ -161,7 +161,7 @@ def landing_plot(sys, T, u, x0, params={}):
     elif ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] > v_y_max)):
       ax.set_title('Sorry, the lunar lander crashed at {:.1f} m/s!'.format(-y[5][-1]))
     elif ((k == 0) & (y[4][-1] > 0)):
-      ax.set_title('The lunar lander did not land, it is now at {:.3f} km of altitude!'.format(y[4][-1]/1e3))
+      ax.set_title('Sorry, the lunar lander did not touch down! Actually it is now at {:.3f} km of altitude!'.format(y[4][-1]/1e3))
     ax.plot(t, y[k]/scale)
     res[ylabel[k]] = y[k]/scale
     ax.set_xlabel(xlabel)
