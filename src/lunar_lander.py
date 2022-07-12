@@ -1,3 +1,11 @@
+import numpy as np
+import matplotlib.pyplot as plt
+try: 
+  import control as ct
+except:
+  !pip install control
+  import control as ct
+  
 def lunar_update(t, x, u, params={}):
   """Lunar lander dynamics
   Parameters
@@ -21,8 +29,6 @@ def lunar_update(t, x, u, params={}):
   y: array
        The time derivatives of p_x, v_x, p_y, v_y, theta, v_theta, m_t and m_f
   """   
-
-  import numpy as np
   
   # Set up the system parameters
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
@@ -90,7 +96,6 @@ def lunar_engine_output(t, x, u, params={}):
   y: array
       The values of F_t and F_l
     """
-  import numpy as np
 
   # Set up the system parameters
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
@@ -112,12 +117,6 @@ def lunar_engine_output(t, x, u, params={}):
   return np.array([F_t, F_l])
 
 def landing_plot(sys, T, u, x0):
-  
-  try: 
-    import control as ct
-  except:
-    !pip install control
-    import control as ct
 
   t, y = ct.input_output_response(sys, T, u, x0)
 
