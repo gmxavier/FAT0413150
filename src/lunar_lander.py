@@ -121,6 +121,41 @@ def lunar_engine_output(t, x, u, params={}):
  
   return np.array([F_t, F_l])
 
+def lunar_control_output(t, x, u, params={}):
+  import numpy as np
+  """Lunar lander generic PD controller
+  Parameters
+  ---------        
+  u: array
+      System input: SP   setpoint                      [-]
+                    PV   process variable              [-]
+                    dPV  time der. of process variable [-]
+  y: array
+      System output: CO  controller output             [-]
+  
+  Returns
+  -------
+  y: array
+      The value of CO.
+    """
+
+  # Set up the system parameters
+  K_P = params.get('K_P', 1.0e+00) # proportional gain [-]
+  K_D = params.get('K_D', 1.0e+00) # derivative gain   [s]
+ 
+  SP  = u[0] # setpoint                      [-]
+  PV  = u[1] # process variable              [-]
+  dPV = u[2] # time der. of process variable [-]
+
+  # Define the auxiliary equations
+  E  = SP - PV # error              [-]
+  dE = -dPV    # time der, of error [-]
+
+  # Define the outputs
+  CO = K_P*E + K_D*dE # controller output [-] 
+ 
+  return np.array([CO])
+
 def landing_plot(sys, T, u, x0, params={}):
   import numpy as np
   try: 
