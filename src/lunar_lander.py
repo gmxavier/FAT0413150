@@ -106,7 +106,6 @@ def lunar_engine_output(t, x, u, params={}):
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
   F_t_max = params.get('F_t_max', 44.0e+03) # main engine max thrust        [N]
   F_l_max = params.get('F_l_max',  0.5e+03) # lateral engine max thrust     [N]
-  v_y_max = params.get('v_y_max',  2.0e+00) # max vertical speed.           [m/s]  
  
   T_t = u[0] # main engine throtlle    [-]
   T_l = u[1] # lateral engine throtlle [-]
@@ -135,6 +134,7 @@ def landing_plot(sys, T, u, x0):
 
   t, y = ct.input_output_response(sys, T, u, x0)
 
+  v_y_max = 2.5 # max vertical speed.           [m/s]  
   xlabel = 'Time $t$ [s]'
   ylabel = ['Main engine throttle $T_t$ [%]',
             'Lateral engine throttle $T_l$ [%]',
