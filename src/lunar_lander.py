@@ -6,10 +6,11 @@ except:
   pip.main(['install'] + package_names)
   import control as ct
 
-  import numpy as np
+
 import matplotlib.pyplot as plt        
   
 def lunar_update(t, x, u, params={}):
+  import numpy as np
   """Lunar lander dynamics
   Parameters
   ----------
@@ -82,6 +83,7 @@ def lunar_update(t, x, u, params={}):
                    thetadot, v_thetadot, m_tdot, m_fdot])
 
 def lunar_engine_output(t, x, u, params={}):
+  import numpy as np
   """Lunar lander engine
   Parameters
   ---------        
@@ -120,6 +122,15 @@ def lunar_engine_output(t, x, u, params={}):
   return np.array([F_t, F_l])
 
 def landing_plot(sys, T, u, x0):
+  import numpy as np
+  try: 
+    import control as ct
+  except:
+    import pip
+    package_names=['control'] #packages to install
+    pip.main(['install'] + package_names)
+  import control as ct
+  
 
   t, y = ct.input_output_response(sys, T, u, x0)
 
