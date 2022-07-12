@@ -106,6 +106,7 @@ def lunar_engine_output(t, x, u, params={}):
   # Source: https://web.aeromech.usyd.edu.au/AMME3500/Course_documents/material/tutorials/Assignment%204%20Lunar%20Lander%20Solution.pdf
   F_t_max = params.get('F_t_max', 44.0e+03) # main engine max thrust        [N]
   F_l_max = params.get('F_l_max',  0.5e+03) # lateral engine max thrust     [N]
+  v_y_max = params.get('v_y_max',  2.0e+00) # max vertical speed.           [m/s]  
  
   T_t = u[0] # main engine throtlle    [-]
   T_l = u[1] # lateral engine throtlle [-]
@@ -155,10 +156,12 @@ def landing_plot(sys, T, u, x0):
   for k, ax in enumerate(axe):
     scale = 1e3 if k in [2,4,8,9] else 1e-2 if k in [0,1] else 1
     y[k] = np.clip(y[k], 0, 1) if k in [0,1] else y[k]
-    if ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] > 2.0)):
+    if ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] > v_y_max)):
       ax.set_title('Sorry, the lunar lander crashed at {:.1f} m/s!'.format(-y[5][-1]))
     elif ((k == 0) & (y[4][-1] > 0)):
       ax.set_title('The crew is alive, but the lunar lander is now at {:.3f} km above the surface!'.format(y[4][-1]/1e3))
+    else:
+      ax.set_title('Congratulations, the lunar lander landed at {:.1f} m/s!'.format(-y[5][-1]))
     ax.plot(t, y[k]/scale)
     res[ylabel[k]] = y[k]/scale
     ax.set_xlabel(xlabel)
