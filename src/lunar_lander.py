@@ -1,10 +1,9 @@
+import pip
+package_names=['control'] #packages to install
+pip.main(['install'] + package_names
+import control
 import numpy as np
-import matplotlib.pyplot as plt
-try: 
-  import control as ct
-except:
-  !pip install control
-  import control as ct
+import matplotlib.pyplot as plt        
   
 def lunar_update(t, x, u, params={}):
   """Lunar lander dynamics
