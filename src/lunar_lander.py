@@ -1,10 +1,12 @@
-import pip
+try: 
+  import control as ct
+except:
+  import pip
+  package_names=['control'] #packages to install
+  pip.main(['install'] + package_names)
+  import control as ct
 
-package_names=['control'] #packages to install
-pip.main(['install'] + package_names)
-         
-import control as ct
-import numpy as np
+  import numpy as np
 import matplotlib.pyplot as plt        
   
 def lunar_update(t, x, u, params={}):
