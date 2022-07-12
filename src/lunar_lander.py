@@ -113,7 +113,11 @@ def lunar_engine_output(t, x, u, params={}):
 
 def landing_plot(sys, T, u, x0):
   
-  import control as ct
+  try: 
+    import control as ct
+  except:
+    !pip install control
+    import control as ct
 
   t, y = ct.input_output_response(sys, T, u, x0)
 
