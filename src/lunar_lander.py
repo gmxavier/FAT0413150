@@ -121,7 +121,7 @@ def lunar_engine_output(t, x, u, params={}):
  
   return np.array([F_t, F_l])
 
-def landing_plot(sys, T, u, x0):
+def landing_plot(sys, T, u, x0, params={}):
   import numpy as np
   try: 
     import control as ct
@@ -131,10 +131,10 @@ def landing_plot(sys, T, u, x0):
     pip.main(['install'] + package_names)
   import control as ct
   
-
+  v_y_max = params.get('v_y_max', 2.5) # max vertical speed [m/s]  
+  
   t, y = ct.input_output_response(sys, T, u, x0)
-
-  v_y_max = 2.5 # max vertical speed.           [m/s]  
+  
   xlabel = 'Time $t$ [s]'
   ylabel = ['Main engine throttle $T_t$ [%]',
             'Lateral engine throttle $T_l$ [%]',
