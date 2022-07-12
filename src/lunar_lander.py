@@ -156,12 +156,12 @@ def landing_plot(sys, T, u, x0, params={}):
   for k, ax in enumerate(axe):
     scale = 1e3 if k in [2,4,8,9] else 1e-2 if k in [0,1] else 1
     y[k] = np.clip(y[k], 0, 1) if k in [0,1] else y[k]
-    if ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] > v_y_max)):
+    if ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] < v_y_max)):
+      ax.set_title('Congratulations, the lunar lander landed at {:.1f} m/s!'.format(-y[5][-1]))
+    elif ((k == 0) & (y[4][-1] < 0) & (-y[5][-1] > v_y_max)):
       ax.set_title('Sorry, the lunar lander crashed at {:.1f} m/s!'.format(-y[5][-1]))
     elif ((k == 0) & (y[4][-1] > 0)):
-      ax.set_title('The crew is alive, but the lunar lander is now at {:.3f} km above the surface!'.format(y[4][-1]/1e3))
-    else:
-      ax.set_title('Congratulations, the lunar lander landed at {:.1f} m/s!'.format(-y[5][-1]))
+      ax.set_title('The lunar lander did not land, it is now at {:.3f} km of altitude!'.format(y[4][-1]/1e3))
     ax.plot(t, y[k]/scale)
     res[ylabel[k]] = y[k]/scale
     ax.set_xlabel(xlabel)
