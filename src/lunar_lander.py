@@ -91,6 +91,7 @@ def lunar_engine_output(t, x, u, params):
       System input: T_t   main engine throtlle    [-]
                     T_l   lateral engine throtlle [-]
                     m_f   fuel mass               [kg]
+                    p_y   vertical position       [m]                    
 
   y: array
       System output: F_t   main engine thrust    [N]
@@ -110,10 +111,11 @@ def lunar_engine_output(t, x, u, params):
   T_t = u[0] # main engine throtlle    [-]
   T_l = u[1] # lateral engine throtlle [-]
   m_f = u[2] # fuel mass               [kg]
+  p_y = u[3] # vertical position       [m]
 
   # Define the auxiliary equations
-  T_t = np.clip(T_t,  0, 1)*(np.sign(m_f) + 1)/2
-  T_l = np.clip(T_l, -1, 1)*(np.sign(m_f) + 1)/2 
+  T_t = np.clip(T_t,  0, 1)*(np.sign(m_f*p_y) + 1)/2
+  T_l = np.clip(T_l, -1, 1)*(np.sign(m_f*p_y) + 1)/2 
   
   # Define the outputs
   F_t = T_t*F_t_max # main engine thrust        [N]
