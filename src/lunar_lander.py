@@ -9,7 +9,7 @@ except:
 
 import matplotlib.pyplot as plt        
   
-def lunar_update(t, x, u, params={}):
+def lunar_update(t, x, u, params):
   import numpy as np
   """Lunar lander dynamics
   Parameters
@@ -82,7 +82,7 @@ def lunar_update(t, x, u, params={}):
                    v_ydot*(np.sign(p_y) + 1)/2, # set vertical acceleration to zero when on ground
                    thetadot, v_thetadot, m_tdot, m_fdot])
 
-def lunar_engine_output(t, x, u, params={}):
+def lunar_engine_output(t, x, u, params):
   import numpy as np
   """Lunar lander engine
   Parameters
@@ -121,7 +121,7 @@ def lunar_engine_output(t, x, u, params={}):
  
   return np.array([F_t, F_l])
 
-def lunar_control_output(t, x, u, params={}):
+def lunar_control_output(t, x, u, params):
   import numpy as np
   """Lunar lander generic PD controller
   Parameters
@@ -156,7 +156,7 @@ def lunar_control_output(t, x, u, params={}):
  
   return np.array([CO])
 
-def landing_plot(sys, T, u, x0, params={}):
+def landing_plot(sys, T, u, x0, params):
   import numpy as np
   try: 
     import control as ct
@@ -168,7 +168,7 @@ def landing_plot(sys, T, u, x0, params={}):
   
   v_y_max = params.get('v_y_max', 2.5) # max vertical speed [m/s]  
   
-  t, y = ct.input_output_response(sys, T, u, x0)
+  t, y = ct.input_output_response(sys, T, u, x0, params)
   
   xlabel = 'Time $t$ [s]'
   ylabel = ['Main engine throttle $T_t$ [%]',
