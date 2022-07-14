@@ -1,3 +1,9 @@
+# lunar_lander.py - A collection of functions to simulate soft landing
+# GMX, 11 July 2022
+#
+# This file contains a collection of update and output functions for a
+# lunar lander to be used with the control package.
+
 try: 
   import control as ct
 except:
