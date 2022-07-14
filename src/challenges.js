@@ -67,9 +67,9 @@ function controlFunction(ball, piston, hinge, T)
 //Rocket Landing
 function controlFunction(rocket)
 {
-  var gimbalAngle1 = 2*rocket.theta + 2*rocket.dtheta;
-  var gimbalAngle2 = 0.01*rocket.x + 0.02*rocket.dx;
+  var gimbalAngle1 = 0.01*rocket.x + 0.05*rocket.dx;
+  var gimbalAngle2 = 2*rocket.theta + 4*rocket.dtheta;
   var gimbalAngle = gimbalAngle1 + gimbalAngle2;
-  var throttle = -0.2*rocket.y - 20*rocket.dy
+  var throttle = -0.1*rocket.y - 2*rocket.dy
   return {throttle:throttle, gimbalAngle:gimbalAngle};
 }
