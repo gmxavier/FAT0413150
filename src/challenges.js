@@ -30,6 +30,21 @@ function controlFunction(vehicle){
   return 4 * (vehicle.targetSpeed - vehicle.speed);
 };
 
+//Cruise Control 2
+//This function performs a step test.
+//Pick up the data at the browser console.
+//Paste it on a Google Sheet and edit it as needed.
+//Then use https://pidtuner.com/ to identify the model.
+var Tnow = 0;
+function controlFunction(vehicle){ 
+  var CO = 1;
+  if (vehicle.T - Tnow > 1) {
+  	console.log(vehicle.T, CO, vehicle.speed)
+    Tnow += 1;
+  }
+  return CO;
+};
+
 //Ball on Platform Balance
 function controlFunction(ball, piston, hinge, T)
 {
