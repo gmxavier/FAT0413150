@@ -10,7 +10,7 @@ def pidtest(Kp, Ki, Kd,
             theta = 0,
             tpar  = [0, 10*20, 1000, 25], #start, stop, N, t0
             test  = True,
-            retval = False):
+            out   = False):
     r'''Simulates a servo loop with a plant and a PID controller (filtered derivative) and an open 
     loop for process reaction curve data.
 
