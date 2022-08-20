@@ -9,7 +9,8 @@ def pidtest(Kp, Ki, Kd,
             den   = [20**2, 2*0.5*20, 1],
             theta = 0,
             tpar  = [0, 10*20, 1000, 25], #start, stop, N, t0
-            test  = True):
+            test  = True,
+            retval = False):
     r'''Simulates a servo loop with a plant and a PID controller (filtered derivative) and an open 
     loop for process reaction curve data.
 
@@ -34,11 +35,14 @@ def pidtest(Kp, Ki, Kd,
     test : boolean
          If test = True, it returns the servo control response.
          If test = False, it returns the process reaction curve.
+    out  : boolean
+         If out = True, it returns the time, the input and the output.
 
     Returns
     -------
     retval : data frame
-         Process reaction curve data (Time, Input and Output)
+         Servo control response or process reaction curve data 
+         (Time, Input and Output)
 
     Notes
     -----
@@ -69,6 +73,6 @@ def pidtest(Kp, Ki, Kd,
     plt.xlabel('Time')
     plt.ylabel('Amplitude')
     plt.legend(['Output', 'Input'])
-    if test != True:
+    if out == True:
         retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
         return retval
