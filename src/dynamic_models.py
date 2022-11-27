@@ -10,16 +10,14 @@ def cstr_update(t, x, u, params={}):
     Parameters
     ----------
     x: array
-         System state: CA, molar concentration of component A at the reactor
-                       in kmol/m3
+         System state: CA, reactor molar concentration of reagent A, [kmol/m3]
                        T, reactor temperature in K
         
     u: array
          System input: F, feed flowrate in m3/h
-                       CA0, molar concentration of component A at the feed
-                       in kmol/m3
+                       CA0, feed molar concentration of reagent A, [kmol/m3]
                        T0, feed tempeature in K
-                       Tc, reactor cooling jacket temperature in K
+                       Tc, cooling jacket temperature in K
   
 
     Returns
@@ -42,7 +40,7 @@ def cstr_update(t, x, u, params={}):
   UA  = params.get ('UA',145.0)    # global heat transfer coefficient times heat transfer area [kcal/(K*h)]
   V   = params.get('V',1.0)        # volume [m3]
  
-  CA= x[0]                         # molar concentration of component A at the feed [kmol/m3]
+  CA= x[0]                         # reactor molar concentration of reagent A, [kmol/m3]
   T = x[1]                         # reactor temperature [K]
 
   F   = u[0]                       # feed flowrate [m3/h]
