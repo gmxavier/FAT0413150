@@ -46,9 +46,9 @@ def cstr_update(t, x, u, params={}):
   T = x[1]                         # reactor temperature [K]
 
   F   = u[0]                       # feed flowrate [m3/h]
-  CA0 = u[1]                       # molar concentration of component A at the feed, [kmol/m3]
-  T0  = u[2]                       # reactor temperature [K]
-  Tc  = u[3]                       # reactor cooling jacket temperature, [K]
+  CA0 = u[1]                       # feed molar concentration of reagent A, [kmol/m3]
+  T0  = u[2]                       # feed temperature [K]
+  Tc  = u[3]                       # cooling jacket temperature, [K]
 
 
   # Define the ODEs
