@@ -65,8 +65,9 @@ def pidtest(Kp, Ki, Kd,
         Gcl = feedback(Gc*Gp, 1)
         plt.title('Servo control response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
     time = linspace(tpar[0], tpar[1], tpar[2])
-    u = ud = 0*time
+    u = 0*time
     u[time>tpar[3]] = 1
+    ud = 0*time
     ud[time>(tpar[3]+theta)] = 1
     y = lsim(Gcl, ud, time)[0]
     plt.plot(time, y, time, u)
