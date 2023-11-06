@@ -12,7 +12,7 @@ def pidtest(Kp, Ki, Kd,
             test  = True,
             out   = False):
     r'''Simulates a servo loop with a plant and a PID controller (filtered derivative) and an open 
-    loop for process reaction curve data.
+    loop unit-step test for process reaction curve data.
 
     Parameters
     ----------
