@@ -113,7 +113,7 @@ def fom(inpval):
     t = inpval['Time']
     u = inpval['Input']
     y = inpval['Output']
-    OS = min(u.iloc[-1] - y) if u.iloc[-1]<0 else max(u.iloc[-1] - y)
+    OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
     DR = 0
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
     ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
