@@ -114,7 +114,7 @@ def fom(inpval):
     u = inpval['Input']
     y = inpval['Output']
     OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
-    DR = 0
+    DR = min(y[y<OS] - u.iloc[-1]) if u.iloc[-1]<0 else max(y[y<OS] - u.iloc[-1])
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
     ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
     ITAE = sum(abs(u - y)*t)*(max(t)-min(t))/len(t)
