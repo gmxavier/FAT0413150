@@ -92,7 +92,7 @@ def fom(inpval):
     Returns
     -------
     retval : tuple
-         Servo control response or process reaction curve data 
+         Figures of merit of a control loop
          (OS, DR, IAE, ISE, ITAE, ITSE)
 
     Notes
