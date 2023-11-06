@@ -77,3 +77,47 @@ def pidtest(Kp, Ki, Kd,
     if out == True:
         retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
         return retval
+
+def fom(inpval):
+    r''' Calculates several figures of merit of a control loop (e.g. overshoot, decay ratio, 
+    integral of absolute error, integral of squared error, integral of time-weighted absolute error, 
+    integral of time-weighted squared error).
+
+    Parameters
+    ----------
+    inpval : data frame
+         Closed-loop response (Input is the set-point) 
+         (Time, Input and Output)
+
+    Returns
+    -------
+    retval : tuple
+         Servo control response or process reaction curve data 
+         (OS, DR, IAE, ISE, ITAE, ITSE)
+
+    Notes
+    -----
+  
+
+    Example
+    --------
+
+    >>> inpval = pidtest(100,5,2000, out=True)
+    >>> fom(inval)
+
+
+    Reference
+    ----------
+
+    '''            
+    t = inpval['Time']
+    u = inpval['Input']
+    y = inpval['Output']
+    OS = min(u[-1] - y) if u[-1]<0 else max(u[-1] - y)
+    DR = 0
+    IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
+    ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
+    ITAE = sum(abs(u - y))*t*(max(t)-min(t))/len(t)
+    ITSE = sum((u - y)**2)*t*(max(t)-min(t))/len(t)
+    retval = (OS,DR,IAE,ISE,ITAE,ITSE)
+    return retval
