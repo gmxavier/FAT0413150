@@ -117,7 +117,7 @@ def fom(inpval):
     DR = 0
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
     ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
-    ITAE = sum(abs(u - y))*t*(max(t)-min(t))/len(t)
-    ITSE = sum((u - y)**2)*t*(max(t)-min(t))/len(t)
+    ITAE = sum(abs(u - y)*t)*(max(t)-min(t))/len(t)
+    ITSE = sum((u - y)**2*t)*(max(t)-min(t))/len(t)
     retval = (OS,DR,IAE,ISE,ITAE,ITSE)
     return retval
