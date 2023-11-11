@@ -13,8 +13,8 @@
 
 ## [Chapter 6.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/06.00-Design-Control-Systems.ipynb)
 
-## [Chapter 7.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/07.00-Stability.ipynb)
+## [Chapter 7.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/07.00-Multiloop-Systems.ipynb)
 
-## [Chapter 8.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/08.00-Multiloop.ipynb)
+## [Chapter 8.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/08.00-Stability.ipynb)
 
 ## [Chapter 9.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/master/notebooks/09.00-Frequency-Response.ipynb)
