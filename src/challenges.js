@@ -88,3 +88,36 @@ function controlFunction(rocket)
   var throttle = -0.1*rocket.y - 2*rocket.dy
   return {throttle:throttle, gimbalAngle:gimbalAngle};
 }
+
+//Rocket Landing 2
+function controlFunction(rocket)
+{
+  // Horizontal position control
+  var SP_x = 0;
+  var E_x = SP_x - rocket.x;
+  var dE_x = -rocket.dx
+  var KP_x = -0.01;
+  var KD_x = -0.05;  
+  var P_x = KP_x*E_x + KD_x*dE_x;
+ 
+  // Vertical position control
+  var SP_y = 10;
+  var E_y = SP_y - rocket.y;
+  var dE_y = -rocket.dy;
+  var KP_y = 0.1;
+  var KD_y = 2;
+  var P_y = KP_y*E_y + KD_y*dE_y;
+  
+  // Pitch control
+  var SP_theta = 0;
+  var E_theta = SP_theta - rocket.theta;
+  var dE_theta = -rocket.dtheta;  
+  var KP_theta = -2;
+  var KD_theta = -4;
+  var P_theta = KP_theta*E_theta + KD_theta*dE_theta;
+    
+  var gimbalAngle = P_x + P_theta;
+  var throttle = P_y
+  
+  return {throttle:throttle, gimbalAngle:gimbalAngle};
+}
