@@ -121,3 +121,29 @@ function controlFunction(rocket)
   
   return {throttle:throttle, gimbalAngle:gimbalAngle};
 }
+
+//Rocket Landing 3
+function controlFunction(rocket)
+{
+  // PD controller
+  function PD(SP, PV, dPV, KP, KD) {
+    var E  = SP - PV
+    var dE = -dPV 
+    var CO = KP*E + KD*dE 
+    return CO 
+  }
+  
+  // Horizontal position control
+  var CO_x = PD(0, rocket.x, rocket.dx, -0.02, -0.10) 
+  
+  // Vertical position control
+  var CO_y = PD(25, rocket.y, rocket.dy, 0.25, 2)
+  
+  // Pitch control
+  var CO_theta = PD(0, rocket.theta, rocket.dtheta, -3.5, -5)
+    
+  var gimbalAngle = CO_x + CO_theta
+  var throttle = CO_y
+  
+  return {throttle:throttle, gimbalAngle:gimbalAngle};
+}
