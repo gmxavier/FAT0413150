@@ -73,9 +73,9 @@ def pidtest(Kp, Ki, Kd,
     plt.plot(time, y, time, u)
     plt.xlabel('Time')
     plt.ylabel('Amplitude')
-    plt.legend(['Output', 'Input'])
+    plt.legend(['PV', 'SP'])
     if out == True:
-        retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
+        retval = DataFrame({'Time': time, 'SP': u, 'PV': y})
         return retval
 
 def fom(inpval):
