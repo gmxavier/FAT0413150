@@ -4,15 +4,16 @@ from pandas import DataFrame
 from numpy import interp
     
 def pidtest(Kp, Ki, Kd, 
-            N     = 10,
+            a     = 0.1,
+            M     = 1,
             num   = [1e-1],
             den   = [20**2, 2*0.5*20, 1],
             theta = 0,
             tpar  = [0, 10*20, 1000, 25], #start, stop, N, t0
             test  = True,
             out   = False):
-    r'''Simulates a servo loop with a plant and a PID controller (filtered derivative) and an open 
-    loop unit-step test for process reaction curve data.
+    r'''Simulates a closed-loop (servo control) with a PID controller (filtered derivative) or an open-loop
+    step test for process reaction curve data.
 
     Parameters
     ----------
@@ -22,26 +23,28 @@ def pidtest(Kp, Ki, Kd,
          Integral gain, [1/time]   
     Kd : float
          Derivative gain, [time] 
-    N  : float
+    a  : float
          Derivative filter factor [-]
+    M  : float
+         Step amplitude
     num : array
-         Plant transfer function numerator coefficients        
+         Process reaction curve transfer function numerator coefficients        
     den : array
-         Plant transfer function denominator coefficients        
+         Process reaction curve transfer function denominator coefficients        
     theta : float
-         Plant dead time, [time]
+         Process reaction curve transfer function dead time, [time]
     tpar : array
          Time parameters (start time, stop time, samples number and step time)
     test : boolean
-         If test = True, it returns the servo control response.
-         If test = False, it returns the process reaction curve.
+         If test = True, it returns the closed-loop (servo control) response.
+         If test = False, it returns the open-loop step test response.
     out  : boolean
          If out = True, it returns the time, the input and the output.
 
     Returns
     -------
     retval : data frame
-         Servo control response or process reaction curve data 
+         Closed-loop (servo control) or process reaction curve response 
          (Time, Input and Output)
 
     Notes
@@ -59,40 +62,41 @@ def pidtest(Kp, Ki, Kd,
 
     '''            
     Gp = Gcl = tf(num, den)
-    plt.title('Process reaction curve')
+    plt.title('Open-loop step test response')
+    plt.legend(['CO', 'SO'])
     if test == True:
-        Gc  = tf([Kd, Kp, Ki], [Kd/Kp/N, 1, 0])
+        Gc  = tf([Kd, Kp, Ki], [a*Kd/Kp, 1, 0])
         Gcl = feedback(Gc*Gp, 1)
-        plt.title('Servo control response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
+        plt.title('Closed-loop (servo control) response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
+        plt.legend(['ISP', 'SO'])
     time = linspace(tpar[0], tpar[1], tpar[2])
     u = 0*time
-    u[time>tpar[3]] = 1
+    u[time>tpar[3]] = M
     ud = 0*time
-    ud[time>(tpar[3]+theta)] = 1
+    ud[time>(tpar[3]+theta)] = M
     y = lsim(Gcl, ud, time)[0]
     plt.plot(time, y, time, u)
     plt.xlabel('Time')
     plt.ylabel('Amplitude')
-    plt.legend(['PV', 'SP'])
     if out == True:
-        retval = DataFrame({'Time': time, 'SP': u, 'PV': y})
+        retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
         return retval
 
 def fom(inpval):
-    r''' Calculates several figures of merit of a control loop (e.g. overshoot, decay ratio, 
+    r''' Calculates several figures of merit of a closed-loop control (e.g. overshoot, decay ratio, 
     integral of absolute error, integral of squared error, integral of time-weighted absolute error, 
     integral of time-weighted squared error).
 
     Parameters
     ----------
     inpval : data frame
-         Closed-loop response (Input is the set-point) 
+         Closed-loop (servo control) response (Input is the ISP) 
          (Time, Input and Output)
 
     Returns
     -------
     retval : tuple
-         Figures of merit of a control loop
+         Figures of merit of a closed-loop (servo control)
          (OS, DR, IAE, ISE, ITAE, ITSE)
 
     Notes
