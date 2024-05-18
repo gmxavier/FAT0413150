@@ -76,9 +76,9 @@ def pidtest(Kp, Ki, Kd,
     plt.plot(time, y, time, u)
     plt.xlabel('Time')
     plt.ylabel('Amplitude')
-    plt.legend(['CO', 'SO'])
+    plt.legend(['Controller output', 'Sensor output'])
     if test == True:
-        plt.legend(['ISP', 'SO'])
+        plt.legend(['Sensor output', 'Internal setpoint'])
     if out == True:
         retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
         return retval
