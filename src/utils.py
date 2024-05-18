@@ -63,12 +63,10 @@ def pidtest(Kp, Ki, Kd,
     '''            
     Gp = Gcl = tf(num, den)
     plt.title('Open-loop step test response')
-    plt.legend(['CO', 'SO'])
     if test == True:
         Gc  = tf([Kd, Kp, Ki], [a*Kd/Kp, 1, 0])
         Gcl = feedback(Gc*Gp, 1)
         plt.title('Closed-loop (servo control) response \n Kp = {0} | Ki = {1} | Kd = {2}'.format(Kp,Ki,Kd))
-        plt.legend(['ISP', 'SO'])
     time = linspace(tpar[0], tpar[1], tpar[2])
     u = 0*time
     u[time>tpar[3]] = M
@@ -78,6 +76,9 @@ def pidtest(Kp, Ki, Kd,
     plt.plot(time, y, time, u)
     plt.xlabel('Time')
     plt.ylabel('Amplitude')
+    plt.legend(['CO', 'SO'])
+    if test == True:
+        plt.legend(['ISP', 'SO'])
     if out == True:
         retval = DataFrame({'Time': time, 'Input': u, 'Output': y})
         return retval
