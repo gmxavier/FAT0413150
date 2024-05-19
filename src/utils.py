@@ -118,8 +118,17 @@ def fom(inpval):
     t = inpval['Time']
     u = inpval['Input']
     y = inpval['Output']
-    OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
-    DR = min(y[y<OS] - u.iloc[-1]) if u.iloc[-1]<0 else max(y[y<OS] - u.iloc[-1])
+    threshold = u.iloc[-1]
+    if u.iloc[-1] > 0:
+        aux = np.where(np.where([(y - np.roll(y,1) > 0) & (y - np.roll(y,-1) > 0)],y, 0)> threshold, y,np.nan)
+        OS = aux[0] - threshold
+        DR = (aux[1] - threshold)/OS
+    if u.iloc[-1] < 0:
+        aux = np.where(np.where([(y - np.roll(y,1) < 0) & (y - np.roll(y,-1) < 0)],y, 0)< threshold, y,np.nan)
+        OS = aux[0] - threshold
+        DR = (aux[1] - threshold)/OS    
+    #OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
+    #DR = min(y[y<OS] - u.iloc[-1]) if u.iloc[-1]<0 else max(y[y<OS] - u.iloc[-1])
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
     ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
     ITAE = sum(abs(u - y)*t)*(max(t)-min(t))/len(t)
