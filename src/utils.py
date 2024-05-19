@@ -122,12 +122,12 @@ def fom(inpval):
     threshold = u.iloc[-1]
     if u.iloc[-1] > 0:
         aux = np.where(np.where([(y - np.roll(y,1) > 0) & (y - np.roll(y,-1) > 0)],y, 0)> threshold, y,np.nan)
-        OS = aux[0] - threshold
-        DR = (aux[1] - threshold)/OS
+        OS = (aux[aux>threshold][0] - threshold)/threshold
+        DR = (aux[aux>threshold][1] - threshold)/(aux[aux>threshold][0] - threshold)
     if u.iloc[-1] < 0:
         aux = np.where(np.where([(y - np.roll(y,1) < 0) & (y - np.roll(y,-1) < 0)],y, 0)< threshold, y,np.nan)
-        OS = aux[0] - threshold
-        DR = (aux[1] - threshold)/OS    
+        OS = (aux[aux<threshold][0] - threshold)/threshold
+        DR = (aux[aux<threshold][1] - threshold)/(aux[aux<threshold][0] - threshold)   
     #OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
     #DR = min(y[y<OS] - u.iloc[-1]) if u.iloc[-1]<0 else max(y[y<OS] - u.iloc[-1])
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
