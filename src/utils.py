@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 from control.matlab import linspace, tf, feedback, lsim
 from pandas import DataFrame
-from numpy import interp
+#from numpy import interp
+import numpy as np
     
 def pidtest(Kp, Ki, Kd, 
             a     = 0.1,
