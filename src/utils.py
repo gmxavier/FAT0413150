@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 from control.matlab import linspace, tf, feedback, lsim
 from pandas import DataFrame
-#from numpy import interp
 import numpy as np
     
 def pidtest(Kp, Ki, Kd, 
@@ -121,6 +120,7 @@ def fom(inpval):
     y = inpval['Output']
     threshold = u.iloc[-1]
     if u.iloc[-1] > 0:
+        # https://stackoverflow.com/questions/50756793/peak-detection-algorithm-in-python
         aux = np.where(np.where([(y - np.roll(y,1) > 0) & (y - np.roll(y,-1) > 0)],y, 0)> threshold, y,np.nan)
         OS = (aux[aux>threshold][0] - threshold)/threshold
         DR = (aux[aux>threshold][1] - threshold)/(aux[aux>threshold][0] - threshold)
@@ -128,8 +128,6 @@ def fom(inpval):
         aux = np.where(np.where([(y - np.roll(y,1) < 0) & (y - np.roll(y,-1) < 0)],y, 0)< threshold, y,np.nan)
         OS = (aux[aux<threshold][0] - threshold)/threshold
         DR = (aux[aux<threshold][1] - threshold)/(aux[aux<threshold][0] - threshold)   
-    #OS = min(y - u.iloc[-1]) if u.iloc[-1]<0 else max(y - u.iloc[-1])
-    #DR = min(y[y<OS] - u.iloc[-1]) if u.iloc[-1]<0 else max(y[y<OS] - u.iloc[-1])
     IAE = sum(abs(u - y))*(max(t)-min(t))/len(t)
     ISE = sum((u - y)**2)*(max(t)-min(t))/len(t)
     ITAE = sum(abs(u - y)*t)*(max(t)-min(t))/len(t)
