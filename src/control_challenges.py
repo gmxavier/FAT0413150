@@ -107,12 +107,11 @@ def tutorial_plot(sys, T, u, x0, params):
 
   res = {xlabel : t}
 
-  fig, axes = plt.subplots(5, 2, figsize=(22, 22))
+  fig, axes = plt.subplots(3, 1, figsize=(22, 22))
   axe = axes.ravel()
 
   for k, ax in enumerate(axe):
-    scale = 1e3 if k in [2,4,8,9] else 1e-2 if k in [0,1] else 1
-    y[k] = np.clip(y[k], 0, 1) if k in [0,1] else y[k]
+    scale = 1
     ax.plot(t, y[k]/scale)
     res[ylabel[k]] = y[k]/scale
     ax.set_xlabel(xlabel)
