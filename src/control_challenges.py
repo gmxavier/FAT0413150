@@ -85,7 +85,7 @@ def tutorial_control_output(t, x, u, params):
  
   return np.array([CO])
 
-def landing_plot(sys, T, u, x0, params):
+def tutorial_plot(sys, T, u, x0, params):
   import numpy as np
   try: 
     import control as ct
