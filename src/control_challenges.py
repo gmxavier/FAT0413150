@@ -39,7 +39,7 @@ def tutorial_update(t, x, u, params):
   g       = params.get('g',         9.81)     # gravitational constant   [m/s2]
   mu      = params.get('mu',         0.0)     # coefficient of friction   [-]
   m_t     = params.get('m_t',        1.0)     # block mass   [kg]
-  theta   = params.get('theta',      1.0)     # plane angle   [rad]
+  theta   = params.get('theta',      0.0)     # plane angle   [rad]
   
   p_x     = x[0] # position [m]
   v_x     = x[1] # speed    [m/s]
