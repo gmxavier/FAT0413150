@@ -37,9 +37,9 @@ def tutorial_update(t, x, u, params):
   
   # Set up the system parameters
   g       = params.get('g',         9.81)     # gravitational constant   [m/s2]
-  mu      = params.get('mu',         0.0)     # coefficient of friction   [-]
+  b       = params.get('b',          0.0)     # friction coefficient   [N/(m/s)]
   m_t     = params.get('m_t',        1.0)     # block mass   [kg]
-  theta   = params.get('theta',      0.0)     # plane angle   [rad]
+  theta   = params.get('theta',      0.0)     # slope   [rad]
   
   p_x     = x[0] # position [m]
   v_x     = x[1] # speed    [m/s]
@@ -48,7 +48,7 @@ def tutorial_update(t, x, u, params):
  
   # Define the ODEs
   p_xdot  = v_x
-  v_xdot  = (F_t - m_t*g*np.sin(theta) - mu*m_t*g*np.cos(theta))/m_t
+  v_xdot  = (F_t - m_t*g*np.sin(theta) - b*v_x)/m_t
  
   return np.array([p_xdot, v_xdot])
 
