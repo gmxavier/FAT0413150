@@ -19,16 +19,19 @@ Please let me know (gmxavier at fat.uerj.br) if you any thoughts or suggestions 
 
 ### [Chapter 4.0 Dynamic response](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/04.00-Dynamic-Response.ipynb)
 -->
+### [Table of contents](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/toc.ipynb?flush=true)
 
-### [Chapter 1.0 Analysis of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/05.00-Analysis-Control-Systems.ipynb)
+### [Chapter 1.0 Introduction](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/02.00-Introduction.ipynb)
 
-### [Chapter 2.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/06.00-Design-Control-Systems.ipynb)
+### [Chapter 2.0 Analysis of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/05.00-Analysis-Control-Systems.ipynb)
 
-### [Chapter 3.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Multiloop-Systems.ipynb)
+### [Chapter 3.0 Design and tuning of single-loop control systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/06.00-Design-Control-Systems.ipynb)
 
-### [Chapter 4.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Frequency-Response.ipynb)
+### [Chapter 4.0 Multiloop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/07.00-Multiloop-Systems.ipynb)
 
-### [Chapter 5.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Stability-Closed-Loop-Systems.ipynb)
+### [Chapter 5.0 Frequency-response analysis](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/09.00-Frequency-Response.ipynb)
+
+### [Chapter 6.0 Stability of closed-loop systems](http://nbviewer.jupyter.org/github/gmxavier/FAT0413150/blob/main/notebooks/08.00-Stability-Closed-Loop-Systems.ipynb)
 
 **License requirements.** The materials in this repository are available for noncommercial use under terms of the [CC-BY-NC-SA-4.0 license](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
