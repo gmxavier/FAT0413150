@@ -160,7 +160,10 @@ def lunar_control_output(t, x, u, params):
   dE = -dPV    # time der, of error [-]
 
   # Define the outputs
-  CO = K_P*E + K_D*dE # controller output [-] 
+  if x[2] == 0:
+    CO = 0.0 # set controller output to zero when on ground
+  else:
+    CO = K_P*E + K_D*dE # controller output [-] 
  
   return np.array([CO])
 
